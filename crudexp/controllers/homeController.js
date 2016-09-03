@@ -25,12 +25,18 @@
 		if(req.mySession.email!=""){
 			res.redirect('/dashboard');
 		}else{
+			console.log("inside else of indexf");
 			res.render('../views/index.ejs');
 		}
 
 	}
 	exports.signup=function(req,res){
-		res.render('../views/signup.ejs');
+		if(req.mySession.email!=""){
+			res.redirect('/dashboard');
+		}
+		else{
+			res.render('../views/signup.ejs');
+		}
 	}
 	exports.signuppost=function(req,res){
 		console.log("req"+JSON.stringify(req.body));

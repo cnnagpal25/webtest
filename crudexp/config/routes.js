@@ -2,7 +2,7 @@
 	'use strict';
 	var userRoute = require('../routes/userRoute');
 	var homeRoute= require('../routes/homeRoute');
-	var bodyParser     =         require("body-parser");
+	var bodyParser = require("body-parser");
 	var cookieParser=require("cookie-parser");
 	var sessions = require("client-sessions");
 	var express = require('express');
