@@ -1,4 +1,5 @@
 (function(){
+//chirag changes to test
 	'use strict';
 	var user=require('../modal/User');
 	exports.login = function (req, res) {
