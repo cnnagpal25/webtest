@@ -22,6 +22,10 @@
 		});
 		app.post('/signup',homeController.signuppost,function(req,res){
 			
-		})
+		});
+		app.get('/register',homeController.register,function(req,res){
+
+		});
+		
 	}
 }())

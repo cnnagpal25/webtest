@@ -46,12 +46,15 @@
 		user.signup(req,function(err,responce){
 			if(responce==true){
 				req.mySession.email=email;
-				res.redirect('/dashboard');
+				res.redirect('/customer-orders');
 			}
 			else{
 				res.render('../views/signup.ejs');
 			}
 
 		})
+	}
+	exports.register=function(req,res){
+		res.render('../views/register.ejs');
 	}
 }())

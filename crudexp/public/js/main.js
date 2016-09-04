@@ -1,35 +1,3 @@
-/*var update = document.getElementById('update')
-update.addEventListener('click', function () {
-	console.log("inside client js");
-  // Send PUT Request here
-  	fetch('quotes', {
-  	method: 'put',
-  	headers: {'Content-Type': 'application/json'},
-  		body: JSON.stringify({
-    	'name': 'Darth Vader',
-    	'quote': 'I find your lack of faith disturbing.'
-  		})
-	})
-})
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 
-var del = document.getElementById('delete')
-
-del.addEventListener('click', function () {
-  fetch('quotes', {
-    method: 'delete',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      'name': 'Darth Vader'
-    })
-  })
-  })*/
-/*var logout=document.getElementById('logout');
-logout.addEventListener('click',function(){
-  console.log("I am here");
-  fetch('logout',{
-    method:'get'
-
-  })
-})*/
+},{}]},{},[1])

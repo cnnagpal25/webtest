@@ -18,5 +18,8 @@
 		app.get('/logout',userController.logout,function(req,res){
 			//res.send("write code for login post");
 		});
+		app.get('/customer-orders',userController.customerOrders,function(req,res){
+
+		});
 	}
 }())
