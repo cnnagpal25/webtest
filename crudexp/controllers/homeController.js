@@ -26,7 +26,7 @@
 			res.redirect('/dashboard');
 		}else{
 			console.log("inside else of indexf");
-			res.render('../views/index.ejs');
+			res.render('../views/index.ejs',{mySession:""});
 		}
 
 	}
