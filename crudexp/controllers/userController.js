@@ -18,7 +18,7 @@
 			user.login(req,email,pass,function(err, status){
 				if(status==true){
 					req.mySession.email=email;
-					res.redirect('/customer-orders');
+					res.render('../views/customer-orders.ejs',{mySession: req.mySession});
 				}
 				else{
 					res.render('../views/login.ejs');
