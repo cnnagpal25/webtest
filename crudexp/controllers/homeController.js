@@ -57,4 +57,7 @@
 	exports.register=function(req,res){
 		res.render('../views/register.ejs');
 	}
+	exports.men=function(req,res){
+		res.json({status: true, data: "mydata"});
+	}
 }())

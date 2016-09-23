@@ -26,6 +26,9 @@
 		app.get('/register',homeController.register,function(req,res){
 
 		});
+		/*app.post('/getMen',homeController.men,function(req,res){
+
+		});*/
 		
 	}
 }())

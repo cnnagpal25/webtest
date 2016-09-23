@@ -2,6 +2,7 @@
 	'use strict';
 	var userRoute = require('../routes/userRoute');
 	var homeRoute= require('../routes/homeRoute');
+	var collectionRoute=require('../routes/collectionRoute');
 	var bodyParser = require("body-parser");
 	var cookieParser=require("cookie-parser");
 	var sessions = require("client-sessions");
@@ -34,5 +35,6 @@
 	console.log("we are inside config");
 		userRoute(app);
 		homeRoute(app);
+		collectionRoute(app)
 	}
 }())
