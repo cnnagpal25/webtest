@@ -2,7 +2,7 @@
 //chirag changes to test
 	'use strict';
 	var user=require('../modal/User');
-	var uitility=require('../services/utility');
+	var utility=require('../services/utility');
 	require('mailin.js');
 	exports.login = function (req, res) {
 		    console.log("inside home controller");
@@ -60,20 +60,23 @@
 		var pass=req.body.password;
 		console.log("pass is"+pass);
         var text = "";
-    	var uid=uitility.generateUid();
+    	var uid=utility.generateUid();
     	console.log("uid is"+uid);
-    	var prams={"email":email,"pass":pass,"uid":uid};
-		user.signup(prams,function(err,responce){
-			console.log("responce is"+responce);
-			if(responce==true){
-				req.mySession.email=email;
-				req.mySession.uid=uid;
-				res.redirect('/customer-orders');
-			}
-			else{
-				res.render('../views/signup.ejs');
-			}
+    	utility.createDb(function(err,user_db){
+	    	console.log("user_dbuser_db"+user_db);
+	    	var prams={"email":email,"pass":pass,"uid":uid,"user_db":user_db};
+			user.signup(prams,function(err,responce){
+				console.log("responce is"+responce);
+				if(responce==true){
+					req.mySession.email=email;
+					req.mySession.uid=uid;
+					res.redirect('/customer-orders');
+				}
+				else{
+					res.render('../views/signup.ejs');
+				}
 
+			})
 		})
 	}
 	exports.register=function(req,res){

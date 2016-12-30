@@ -25,9 +25,10 @@ db.collection('user').findOne({"email":email},{password:1},function(err,data){
 		var email=prams.email;
 		var pass=prams.pass;
 		var uid=prams.uid;
-		console.log("key in model"+pass);
+		var uDb=prams.user_db;
+		console.log("key in model"+JSON.stringify(prams));
 		try{
-			db.collection('user').insert({"email":email,"password":pass,"uid":uid},function(err,data){
+			db.collection('user').insert({"email":email,"password":pass,"uid":uid,"uDb":uDb},function(err,data){
 				if(!err){
 					status=true;
 					signupCallback("",status);
