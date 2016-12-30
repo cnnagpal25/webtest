@@ -21,11 +21,13 @@ db.collection('user').findOne({"email":email},{password:1},function(err,data){
 		})
 		
 	},
-	signup:function(req,signupCallback){
-		var email=req.body.email;
-		var pass=req.body.password;
+	signup:function(prams,signupCallback){
+		var email=prams.email;
+		var pass=prams.pass;
+		var uid=prams.uid;
+		console.log("key in model"+pass);
 		try{
-			db.collection('user').insert({"email":email,"password":pass},function(err,data){
+			db.collection('user').insert({"email":email,"password":pass,"uid":uid},function(err,data){
 				if(!err){
 					status=true;
 					signupCallback("",status);

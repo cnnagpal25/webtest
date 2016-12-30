@@ -1,6 +1,7 @@
 (function(){
 	'use strict';
 	var user=require('../modal/User');
+	require('mailin.js');
 	exports.me = function (req, res) {
 		    console.log("inside controller me");
 		    res.send("page render finished from controller");
@@ -10,6 +11,7 @@
 		    res.send("page render finished from you controller");
 		};
 		exports.login=function(req,res){
+			
 			console.log("req"+JSON.stringify(req.body));
 			var email=req.body.email;
 			var pass=req.body.password;
@@ -28,6 +30,7 @@
 		}
 		exports.logout=function(req,res){
 			req.mySession.email="";
+			req.mySession.uid="";
 			res.redirect('/');
 		}
 		exports.customerOrders=function(req,res){
