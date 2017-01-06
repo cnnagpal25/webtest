@@ -1,3 +1,4 @@
+var linkDb=require('../config/db');
 module.exports = {
 	getMenDetail:function(req,menDetailsCallback){
 	console.log("inside Men modal");
@@ -13,6 +14,24 @@ module.exports = {
 			}
 			//});
 		})
+	},
+	checkSku:function(data,checkSkuCallback){
+		linkDb.connectDb(data.uDb,function(err,userDb){
+			if(!err){
+				userDb.collection('men').count({"merchantsku":data.sku},function(error, numOfDocs){
+					if(!error){
+						checkSkuCallback("",numOfDocs)
+					}
+					else{
+						checkSkuCallback(error,"");
+					}
+				})
+			}
+			else{
+				checkSkuCallback(err,"");
+			}
+		})
+		console.log("data is"+JSON.stringify(data));
 	}
 }
 

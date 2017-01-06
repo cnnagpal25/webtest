@@ -21,5 +21,17 @@
 		app.get('/customer-orders',userController.customerOrders,function(req,res){
 
 		});
+		app.get('/additem',userController.addItem,function(req,res){
+
+		});
+		app.post('/additem',userController.submitItem,function(req,res){
+
+		});
+		app.post('/validatemerchantsku',userController.validateMerchantsku,function(req,res){
+
+		});
+		app.get('/displayList',userController.displayList,function(req,res){
+
+		});
 	}
 }())

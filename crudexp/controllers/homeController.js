@@ -6,13 +6,13 @@
 	require('mailin.js');
 	exports.login = function (req, res) {
 		    console.log("inside home controller");
-		    var ws_url = "http://localhost:7000";
-			var api_key="jjjjj";
+		    //var ws_url = "http://localhost:7000";
+			/*var api_key="jjjjj";
       		var client = new Mailin(ws_url , api_key);
       		console.log("client is"+JSON.stringify(client));
       		client.get_lists({"page":1,"pagelimit":10}).on('complete', function(data) {
       			console.log("end of request");
-      		});
+      		});*/
 		    //res.render('index')
 		    if(req.mySession.email==""){
 		    	res.render('../views/login.ejs');
@@ -35,9 +35,9 @@
 		var api_key="jjjjj";
       	var client = new Mailin(ws_url , api_key);
       	console.log("client is"+JSON.stringify(client));
-      	client.post_lists({"page":1,"pagelimit":10}).on('complete', function(data) {
+      	/*client.post_lists({"page":1,"pagelimit":10}).on('complete', function(data) {
       			console.log("end of request");
-      	});
+      	});*/
 		if(req.mySession.email!=""){
 			res.redirect('/dashboard');
 		}else{
@@ -70,6 +70,7 @@
 				if(responce==true){
 					req.mySession.email=email;
 					req.mySession.uid=uid;
+					req.mySession.user_db=user_db;
 					res.redirect('/customer-orders');
 				}
 				else{

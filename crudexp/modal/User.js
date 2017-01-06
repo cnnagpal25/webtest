@@ -1,21 +1,14 @@
 module.exports = {
-	login:function(req,email,pass,loginCallback){
+	login:function(req,email,loginCallback){
 		console.log("inside login modal"+req.body.email);
-
-db.collection('user').findOne({"email":email},{password:1},function(err,data){
-			var status="";
+		db.collection('user').findOne({"email":email},{password:1,uDb:1},function(err,data){
+			var status={};
 			if(!err && data != null){
-				console.log("data is"+JSON.stringify(data));
-				if(data.password==pass){
-					status=true;
-				}
-				else{
-					status=false;
-				}
+				status={"pass":data.password,"uDb":data.uDb};
 				loginCallback("",status);
 			}
 			else{
-				status=false;
+				status={"pass":"","uDb":""};
 				loginCallback(err,status);
 			}
 		})
@@ -33,6 +26,7 @@ db.collection('user').findOne({"email":email},{password:1},function(err,data){
 					status=true;
 					signupCallback("",status);
 				}else{
+					console.log("error is"+JSON.stringify(err))
 					status=false;
 					signupCallback(err,status);
 				}

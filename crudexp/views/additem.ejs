@@ -1,0 +1,21 @@
+<html>
+<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/validate.js"></script>
+
+<form action="/additem"  name="myForm" onsubmit="return formValidate()" method="POST">
+    Name: <input type="text" placeholder="Enter Product Namne" name="productName"><br><br>
+    Category: <select name="category" >
+	  			<option value="men">Men</option>
+	  			<option value="women">Women</option>
+	  			<option value="child">Child</option>
+			</select> <br><br>
+	Description :<textarea name="description" placeholder="Enter Product Description"> </textarea><br><br>
+	Merchant SKU: <input type="text" id="sku" onblur="merchantskuValidate()" placeholder="Merchant SKU" name="merchantsku"><br><br>
+	Item Price: <input class="numericOnly" type="text" placeholder="Max Retail Price" name="itemprice"><br><br>
+	Price after Discount: <input class="numericOnly" type="text" placeholder="Price after Discount" name="itemdiscount"><br><br>
+	<input type="submit">
+</form>
+	<script type="text/javascript">
+	var cdb="<%- uDb %>"
+	</script>
+</html>
