@@ -18,8 +18,13 @@ module.exports = {
 	checkSku:function(data,checkSkuCallback){
 		linkDb.connectDb(data.uDb,function(err,userDb){
 			if(!err){
-				userDb.collection('men').count({"merchantsku":data.sku},function(error, numOfDocs){
+				console.log("userDb is"+userDb+"data.sku"+data.sku);
+				console.dir(data);
+				var sku=""+data.sku;
+				console.log("merchantSku"+sku);
+				userDb.collection('men').count({"merchantSku":sku},function(error, numOfDocs){
 					if(!error){
+						console.log("numOfDocs"+numOfDocs)
 						checkSkuCallback("",numOfDocs)
 					}
 					else{
@@ -31,7 +36,6 @@ module.exports = {
 				checkSkuCallback(err,"");
 			}
 		})
-		console.log("data is"+JSON.stringify(data));
 	}
 }
 
