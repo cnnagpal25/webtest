@@ -1,9 +1,25 @@
 <html>
 <script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/validate.js"></script>
-
+<%if (data) {
+data=JSON.parse(data)
+ %>	
 <form action="/additem"  name="myForm" onsubmit="return formValidate()" method="POST">
-    Name: <input type="text" placeholder="Enter Product Namne" name="productName"><br><br>
+    Name: <input type="text" placeholder="Enter Product Namne" name="productName" value="<%= data.data.productName %>" ><br><br>
+    Category: <select name="category" value="<%= data.data.productCategory %>" >
+	  			<option value="men">Men</option>
+	  			<option value="women">Women</option>
+	  			<option value="child">Child</option>
+			</select> <br><br>
+	Description :<textarea name="description" placeholder="Enter Product Description"><%= data.data.description %> </textarea><br><br>
+	Merchant SKU: <input type="text" id="sku" onblur="merchantskuValidate()" placeholder="Merchant SKU" name="merchantsku" readonly value="<%= data.data.merchantSku %>" ><br><br>
+	Item Price: <input class="numericOnly" type="text" value="<%= data.data.itemPrice %>" placeholder="Max Retail Price" name="itemprice"><br><br>
+	Price after Discount: <input class="numericOnly"  value="<%= data.data.itemDiscount %>" type="text" placeholder="Price after Discount" name="itemdiscount"><br><br>
+	<input type="submit">
+</form>
+<% }else {%>
+<form action="/additem"  name="myForm" onsubmit="return formValidate()" method="POST">
+    Name: <input type="text" placeholder="Enter Product Namne" name="productName" value=<%=  %> ><br><br>
     Category: <select name="category" >
 	  			<option value="men">Men</option>
 	  			<option value="women">Women</option>
@@ -15,7 +31,10 @@
 	Price after Discount: <input class="numericOnly" type="text" placeholder="Price after Discount" name="itemdiscount"><br><br>
 	<input type="submit">
 </form>
+
+<% } %>
 	<script type="text/javascript">
 	var cdb="<%- uDb %>"
+	var data='<%- data %>'
 	</script>
 </html>

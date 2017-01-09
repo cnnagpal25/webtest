@@ -4,8 +4,25 @@
 <script type="text/javascript">
 	var data='<%- data %>'
 	data=JSON.parse(data);
+	var st="";
+	st='<table style="width:50%">';
+	st+='<tr>';
+    st+='<th align="left">Product Name</th>';
+    st+='<th align="left" >Product Category</th> ';
+    st+='<th align="left">Price</th>';
+  	st+='</tr>';
+  	
 	for(i=0;i<data.data.length;i++){
-		
+		st+='<tr>';
+  		st+='<td>'+data.data[i].productName+'</td>';
+	    st+='<td>'+data.data[i].productCategory+'</td> ';
+	    st+='<td>'+data.data[i].itemPrice+'</td>';
+	    st+='<td>'+'<a href="/edit/'+data.data[i].merchantSku+'">Edit</a></td>';
+	    st+='<td>'+'<a href="http://www.w3schools.com">Delete</a></td>';
+	  	st+='</tr>';
+	  	
 	}
+	st+='</table>';
+	document.getElementById("list1").innerHTML = st;
 </script>
 </html>

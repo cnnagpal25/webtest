@@ -33,5 +33,8 @@
 		app.get('/displayList',userController.displayList,function(req,res){
 
 		});
+		app.get('/edit/:sku',userController.editItem,function(req,res){
+
+		});
 	}
 }())

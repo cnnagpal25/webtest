@@ -99,15 +99,29 @@
 	      	client.get_record(params).on('complete', function(data) {
       	 		if(data.err!="undefined"){
       	 			console.log("data here is"+data);
-
       	 			res.render('../views/listItem.ejs',{data:data});
       	 		} else{
       	 			console.log("error is"+JSON.stringify(data));
-      	 			
-      	 		}
+         	 	}
 	      			
 	      	});
 			//res.send("hhhhhhh");
+		}
+		exports.editItem=function(req,res){
+			console.log("editItem");
+			console.log(req.params.sku);
+			var user_db=req.mySession.uDb;
+			var ws_url = "http://localhost:7000";
+			var api_key="jjjjj";
+      		var client = new Mailin(ws_url , api_key);
+	      	console.log("client is"+JSON.stringify(client));
+	      	var params={"user_db":user_db,"merchantSku":req.params.sku};
+	      	console.log("params in editItem is"+JSON.stringify(params));
+	      	client.get_record_update(params).on('complete', function(data) {
+	      		console.log("data isssssss"+JSON.stringify(data));
+	      		res.render('../views/additem.ejs',{mySession:req.mySession,uDb:req.mySession.uDb,data:data});
+	      		
+	      	});
 		}
 			
 }())
