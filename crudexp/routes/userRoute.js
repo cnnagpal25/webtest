@@ -36,5 +36,8 @@
 		app.get('/edit/:sku',userController.editItem,function(req,res){
 
 		});
+		app.post('/updateitem',userController.updateItem,function(req,res){
+
+		});
 	}
 }())

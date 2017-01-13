@@ -42,7 +42,7 @@
 		    	res.render('../views/login.ejs');
 		    }
 		    else{
-		    	res.render('../views/additem.ejs',{mySession:req.mySession,uDb:req.mySession.uDb});
+		    	res.render('../views/additem.ejs',{mySession:req.mySession,uDb:req.mySession.uDb,data:""});
 		    }
 		}
 		exports.submitItem=function(req,res){
@@ -122,6 +122,33 @@
 	      		res.render('../views/additem.ejs',{mySession:req.mySession,uDb:req.mySession.uDb,data:data});
 	      		
 	      	});
+		}
+		exports.updateItem=function(req,res){
+			 console.log("updateItem");
+			 console.log("req"+JSON.stringify(req.body));
+			 var productName=req.body.productName;
+			 var category=req.body.category;
+			 var description=req.body.description;
+			 var merchantsku=req.body.merchantsku;
+			 var itemprice=req.body.itemprice;
+			 var itemdiscount=req.body.itemdiscount;
+			 var user_db=req.mySession.uDb;
+			 console.log(req.mySession.uDb);
+
+			 var ws_url = "http://localhost:7000";
+			 var api_key="jjjjj";
+      		 var client = new Mailin(ws_url , api_key);
+	      	 console.log("client is"+JSON.stringify(client));
+	      	 var params={"productName":productName,"category":category,"description":description,"merchantsku":merchantsku,"itemprice":itemprice,"itemdiscount":itemdiscount,"user_db":user_db};
+	      	 client.post_items(params).on('complete', function(data) {
+	      	 		if(data.err!="undefined"){
+	      	 			console.log("data"+JSON.stringify(data));
+	      	 			res.redirect('/displayList');
+	      	 		} else{
+	      	 			res.redirect('/additem');
+	      	 		}
+	      			
+	      	 });
 		}
 			
 }())

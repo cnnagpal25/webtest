@@ -4,7 +4,7 @@
 <%if (data) {
 data=JSON.parse(data)
  %>	
-<form action="/additem"  name="myForm" onsubmit="return formValidate()" method="POST">
+<form action="/updateitem"  name="myForm" onsubmit="return formValidate()" method="POST">
     Name: <input type="text" placeholder="Enter Product Namne" name="productName" value="<%= data.data.productName %>" ><br><br>
     Category: <select name="category" value="<%= data.data.productCategory %>" >
 	  			<option value="men">Men</option>
@@ -19,7 +19,7 @@ data=JSON.parse(data)
 </form>
 <% }else {%>
 <form action="/additem"  name="myForm" onsubmit="return formValidate()" method="POST">
-    Name: <input type="text" placeholder="Enter Product Namne" name="productName" value=<%=  %> ><br><br>
+    Nameeeee: <input type="text" placeholder="Enter Product Namne" name="productName" value=<%=  %> ><br><br>
     Category: <select name="category" >
 	  			<option value="men">Men</option>
 	  			<option value="women">Women</option>
